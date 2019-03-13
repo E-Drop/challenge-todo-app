@@ -1,25 +1,23 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import './App.css';
+import {Switch, Route} from 'react-router-dom'
+import './App.scss';
+import Todo from './components/Todo'
+import NewTodo from './components/NewTodo'
+import Navbar from './components/NavBar'
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faEnvelope, faTimes, faPenSquare } from '@fortawesome/free-solid-svg-icons';
 
+library.add(faEnvelope, faTimes, faPenSquare);
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <Navbar/>
+      <Switch>
+      <Route exact path="/" component={Todo} />
+      <Route path="/new" component={NewTodo} />
+    </Switch>
       </div>
     );
   }
